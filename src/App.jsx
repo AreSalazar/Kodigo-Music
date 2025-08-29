@@ -1,50 +1,22 @@
-import React from "react";
-import "./App.css";
-import albumImage from "./assets/images/Mt-washington.png";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import FormPage from "./pages/FormPage";
 
 function App() {
   return (
-    <div className="player-container">
-      {/*Imagen-álbum*/}
-      <div className="album-art">
-         <img src={albumImage} alt="Portada del álbum" />
-      </div>
+    <Router>
+      <nav style={{ display: "flex", gap: "20px", padding: "10px"}}>
+        {/*Agregando color de letra a los links*/}
+        <Link to="/" style={{ color: "white"}}>Inicio</Link>
+        <Link to="/form" style={{ color: "white"}}>Formulario</Link>
+      </nav>
 
-      {/*Info de la canción */}
-      <div className="song-info">
-        <h2>Mt Washington</h2>
-        <p>Local Natives</p>
-      </div>
-
-      {/*Barra-progreso*/}
-      <div className="progress-container">
-        <span>0:00</span>
-        <div className="progress-bar">
-          <div className="progress"></div>
-        </div>
-        <span>3:45</span>
-      </div>
-
-      {/*Controles de repro*/}
-      <div className="controls">
-        {/* Botón Anterior */}
-        <button className="control-btn">
-          ⏮
-        </button>
-
-        {/*Botón play*/}
-        <button className="control-btn play-btn">
-          ▶️
-        </button>
-
-        {/*Botón next*/}
-        <button className="control-btn">
-          ⏭
-        </button>
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/form" element={<FormPage />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
